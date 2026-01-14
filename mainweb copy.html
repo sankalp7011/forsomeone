@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0"
+    />
+   <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js" ></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js" ></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sankalp & Charlotte: A Tale of Two Weirdos</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+  <style>
+  * {
+  box-sizing: border-box;
+}
+
+body {
+
+  place-items: top;
+  margin: 0;
+  height: 100vh;
+
+  background: #ff1c1c;
+}
+
+.dropdown {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  translate: none;
+  cursor: pointer;
+  z-index: 100;
+}
+
+
+.dropdown > button {
+  width: 170px;
+  height: 60px;
+  border: 0;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 17px;
+  background: #3c3c3c;
+}
+
+.dropdown > .content {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  color: #f7f7f7;
+}
+
+.dropdown > .content::after {
+  content: "";
+  position: absolute;
+  bottom: 6px;
+  right: 10%;
+  width: 80%;
+  height: 1px;
+  transform: scaleX(0);
+  background: rgb(255 255 255 / 30%);
+  transition: 0.3s;
+}
+
+.dropdown:hover > .content::after {
+  transform: scaleX(1);
+}
+
+.dropdown > .content > span:first-child {
+  font-size: 20px;
+}
+
+.dropdown > .content > span:last-child {
+  margin-left: auto;
+}
+
+.dropdown > .content > span:last-child {
+  transition: 0.3s;
+}
+
+.dropdown:hover > .content > span:last-child {
+  rotate: -180deg;
+}
+
+.dropdown > .menu {
+  position: absolute;
+  z-index: 1;
+  top: 60px; /* below the button */
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  display: grid;
+  width: 170px;
+  padding: 10px 0;
+  display: grid;
+  gap: 17px;
+  border-radius: 6px;
+  background: linear-gradient(#ea8d8d, #a890fe);
+  visibility: hidden;
+  opacity: 0;
+  scale: 0.85;
+  transition: 0.3s;
+}
+
+
+.dropdown:hover > .menu {
+  visibility: visible;
+  opacity: 1;
+  scale: 1;
+}
+
+.dropdown > .menu > a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #f7f7f7;
+  font-size: 14px;
+  padding: 0 24px;
+}
+
+.dropdown > .menu > a:hover {
+  background: rgb(0 0 0 / 10%);
+}
+
+.dropdown > .menu > a > span {
+  font-size: 20px;
+}
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive;
+      background-color: #ffffff;
+      animation: movePatternsnow 1s linear infinite; /* Adjust duration/speed here */
+background-image: url("https://www.transparenttextures.com/patterns/lined-paper.png");
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+      overflow-x: hidden;
+      font-size: 1.4rem;
+      color: #6f0909;
+    }
+
+    .alert {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  opacity: 1;
+  transition: opacity 0.6s;
+  margin-bottom: 15px;
+}
+
+
+
+
+@keyframes movePatternsnow {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 200px 0;
+  }
+}
+
+.alert.success {background-color: #04AA6D;}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+#quiz-container {
+    text-align: center;
+    padding: 2rem;
+  }
+
+  #questionBox h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .optionBtn {
+    display: block;
+    margin: 0.5rem auto;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .optionBtn:hover {
+    background-color: #e85a5a;
+  }
+
+  #timer {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    color: #444;
+  }
+
+
+.closebtn:hover {
+  color: black;
+}
+
+header {
+  background-color: #157595;
+  background-image: url("https://www.transparenttextures.com/patterns/gray-floral.png");
+  background-repeat: repeat;
+  animation: movePattern 3.5s linear infinite; /* Adjust duration/speed here */
+  
+  color: #D3D3D3;
+  text-align: center;
+  padding: 2rem 1rem;
+  position: relative;
+  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+  border-bottom: 5px dashed #ff0000;
+}
+
+    @keyframes movePattern {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 200px 50px;
+  }
+}
+
+    header::after {
+      content: "❤️";
+      font-size: 2rem;
+      position: flex;
+      top: 1rem;
+      right: 1rem;
+    }
+
+    h1 {
+      font-size: 4rem;
+      margin: 0;
+      text-shadow: 2px 2px #6c1414;
+    }
+
+    .scrapbook-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+     
+      overflow: hidden;
+      margin-top: 9rem;
+      margin-bottom: 9rem;
+      position: relative;
+    }
+
+
+
+  body {
+    cursor: url('foxsmall.png'), auto;
+  }
+
+
+
+
+
+    .scrapbook {
+      display: flex;
+      flex-direction: row;
+      transition: transform 1.3s ease-in-out;
+      width: 400%;
+    }
+
+    .scrapbook-page {
+      min-width: 100%;
+      height: 80%;
+      background-color: #FF474D;
+background-image: url("https://www.transparenttextures.com/patterns/classy-fabric.png");
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+      border-radius: 12px;
+      padding: 2rem;
+      box-sizing: border-box;
+      border: 8px double #ece9e9;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+
+      box-shadow: 8px 8px 15px rgba(255, 255, 255, 0.15);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .scrapbook-page h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .scrapbook-page p {
+      font-size: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .nav-buttons {
+      position: absolute;
+      bottom: 1px;
+      width: 105%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 2rem;
+      box-sizing: border-box;
+    }
+
+    .next-button, .prev-button {
+      background: #b09f9f;
+      color: rgb(176, 25, 25);
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.5rem;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .next-button:hover, .prev-button:hover {
+      transform: scale(1.2);
+    }
+
+    .locked-page {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #ff6b6b;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .heart-icon {
+      font-size: 5rem;
+      cursor: pointer;
+      margin: 2rem 0;
+      transition: transform 0.3s ease;
+    }
+
+    .heart-icon:hover {
+      transform: scale(3.0);
+    }
+
+    #quiz-container {
+    text-align: center;
+    padding: 2rem;
+  }
+
+  #questionBox h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .optionBtn {
+    display: block;
+    margin: 0.5rem auto;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .optionBtn:hover {
+    background-color: #e85a5a;
+  }
+
+  #timer {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    color: #444;
+  }
+
+    .secret-message {
+      display: none;
+      font-size: 2rem;
+      margin-top: -2.5rem;
+    }
+    #refresh-message {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #2d1a12;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  z-index: 1000;
+  animation: fadeInOut 1.5s ease-in-out forwards;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateX(-50%) scale(0.95); }
+  10% { opacity: 1; transform: translateX(-50%) scale(1); }
+  90% { opacity: 1; }
+  100% { opacity: 0; transform: translateX(-50%) scale(0.95); }
+}
+
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+  
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+
+
+/* Style for the message container */
+#click-message {
+  position: absolute;
+  bottom: 120px; /* above the fox */
+  left: 50%;
+  
+  font-size: 1.1em;
+  text-align: center;
+  background: #fff3f6;
+  padding: 6px 12px;
+  border-radius: 12px;
+  border: 2px solid #ff6b81;
+  color: #ff3366;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  white-space: nowrap;
+  z-index: 10;
+}
+
+/* Optional fade in animation */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Style for the fox avatar container */
+#fox-avatar-container {
+  position: fixed;
+  top: 150px;
+  left: 50px;
+  z-index: 10;
+}
+
+#fox-avatar {
+  width: 120px;
+  cursor: pointer;
+}
+
+
+
+#fox-speech-bubble {
+  position: absolute;
+  bottom: 120px; /* above the fox */
+  left: 50%;
+  pointer-events: none;
+  transform: translateX(-50%);
+  background-color: #fff5f8;
+  color: #333;
+  border: 2px solid #ff9dbb;
+  border-radius: 12px;
+  padding: 8px 14px;
+  max-width: 200px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  font-family: 'Comic Sans MS', cursive;
+  font-size: 14px;
+  line-height: 1.3;
+  z-index: 100;
+}
+
+/*#fox-speech-bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 10px 10px 0 10px;
+  border-style: solid;
+  border-color: #fff5f8 transparent transparent transparent;
+}*/
+
+
+
+button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #ff6b81;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2em;
+}
+#fox-sleep-message {
+  position: absolute;
+  bottom: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fef6f8;
+  border: 2px solid #ffc0cb;
+  border-radius: 12px;
+  padding: 8px 14px;
+  max-width: 200px;
+  font-family: 'Comic Sans MS', cursive;
+  font-size: 14px;
+  text-align: center;
+  color: #555;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+#fox-sleep-message::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 10px 10px 0 10px;
+  border-style: solid;
+  border-color: #fef6f8 transparent transparent transparent;
+}
+
+button:hover {
+  background-color:   #000000;
+}
+
+/* Animations */
+@keyframes tailWag {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes earTwitch {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes blink {
+  0%, 100% {
+    transform: scaleY(1);
+  }
+  20% {
+    transform: scaleY(0.1);
+  }
+}
+
+/* Apply the blink periodically */
+
+  #fox-avatar.blinking {
+    animation: blink 0.3s ease-in-out;
+  }
+
+  #fox-avatar:hover {
+    transform: scale(1.1) rotate(360deg);
+    transition: transform 1s ease;
+    filter: drop-shadow(0 0 20px #b31313);
+  }
+
+  /* Disable styles when fox is turned off */
+  .fox-disabled #fox-avatar.blinking {
+    animation: none !important;
+  }
+
+  .fox-disabled #fox-avatar:hover {
+    transform: none !important;
+    transition: none !important;
+    filter: none !important;
+    cursor: default !important;
+  }
+
+
+
+#mood-selector {
+  
+  bottom: 260px;
+  left: 9.5%;
+  transform: translateX(-55%);
+  position: fixed;
+  gap: 10px;
+}
+
+#mood-selector button {
+  background: #fff3f6;
+  border: 2px solid #ffa6c9;
+  border-radius: 50%;
+  padding: 6px 10px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+#mood-selector button:hover {
+  transform: scale(1.2);
+}
+
+#gift-container {
+  position: fixed;
+  bottom: 100px;
+  opacity: 1;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+}
+
+
+
+.gift {
+  position: fixed;
+  bottom: 300px; /* Adjust to appear above the fox */
+  left: 80px; /* Adjust as needed */
+  opacity: 1;
+  color: #921a6a;
+  font-size: 32px;
+  opacity: 0;
+  animation: floatUp 3s ease forwards;
+  z-index: 99;
+  pointer-events: none;
+}
+
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  70% {
+    transform: translateY(-60px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-80px);
+    opacity: 0;
+  }
+}
+
+@keyframes foxHop {
+  0% { transform: translateY(0); }
+  30% { transform: translateY(-20px); }
+  60% { transform: translateY(10px); }
+  100% { transform: translateY(0); }
+}
+
+.fox-hop {
+  animation: foxHop 0.5s ease;
+}
+.hidden {
+  display: none;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap');
+
+    * {
+      outline: none;
+      box-sizing: border-box;
+    }
+
+   /* body {
+      margin: 0;
+      padding-top: 2rem; 
+      background-color: steelblue;
+      color: white;
+      font-family: 'Roboto Slab', serif;
+      font-weight: 300;
+      
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-blend-mode: multiply;
+      text-align: center; 
+    }*/
+
+    h1.typing-text {
+      display: inline-block; /* allows width and animation to work */
+      width: 15ch;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid;
+      font-size: 6vw;
+      animation: typing 2s steps(18) infinite alternate,
+                 blink 0.4s step-end infinite alternate;
+      text-shadow: 0px 0px 3px white;
+      margin: 0;
+    }
+
+    @keyframes typing {
+      from {
+        width: 0;
+      }
+    }
+
+    @keyframes blink {
+      50% {
+        border-color: transparent;
+      }
+    }
+
+    @media (max-width: 767px) {
+      h1.typing-text {
+        font-size: 8vw;
+      }
+    }
+   
+
+body {
+  font-family: 'Comic Sans MS', cursive;
+}
+
+.menu.active {
+  opacity: 1;
+  visibility: visible;
+}
+  </style>
+</head>
+<body>
+
+  <div class="dropdown">
+      <div class="content">
+        <span class="material-symbols-outlined"> settings </span>
+        <p>Options</p>
+        <span class="material-symbols-outlined"> expand_more </span>
+      </div>
+      <button type="button"></button>
+      <div class="menu">
+        <a href="settings.html" onclick="gosetting()">
+          <span class="material-symbols-outlined"> lock </span>
+          <p>Settings</p>
+        </a>
+      <a href="#" onclick="smoothRefresh()">
+  <span class="material-symbols-outlined">refresh</span> Refresh
+</a>
+
+      </div>
+    </div>
+
+
+
+
+  <div id="fox-avatar-container">
+    <div id="gift-container"></div>
+    <img src="foxbot.webp" alt="Fox Avatar" id="fox-avatar" />
+    
+    <!-- Initial message near fox -->
+  
+    
+    <!-- Fox speaking bubble -->
+    <div id="fox-speech-bubble" style="display: none;">
+      <p id="fox-message">Click on me to talk to me!</p>
+    </div>
+  
+  
+    <!-- Mood selector -->
+    <div id="mood-selector">
+      <button data-mood="happy">😊</button>
+      <button data-mood="sad">😢</button>
+      <button data-mood="in-love">😍</button>
+    </div>
+  </div>
+  <header>
+    <h1 class="typing-text">My Life For You....</h1>
+  </header>
+  
+  
+  <div class="scrapbook-container">
+    <div class="scrapbook" id="scrapbook">
+      <div class="scrapbook-page">
+        <h2>Page 1: A Letter to You</h2>
+        <p>Dear Charlotte,</p>
+        <p>From all the laughs to our late-night chats, I’ve really loved the connection we’ve had. It’s a little tough knowing you’ll be off on your own path soon, but I’m so glad we’ve shared this time—and I’ll always hold it close.✨✨</p>
+      </div>
+      <div class="scrapbook-page">
+        <h2>Page 2: A Virtual Hug</h2>
+        <p>If I could reach through the screen and give you the biggest hug ever, I would. 🤗 So here’s a virtual one, wrapped in love and joy!</p>
+        <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExeXB0YWZ2NWt4cnJ2MzkxaDRrbG5qMTJmbmxlNnV0bm5jcHc4MGdlYSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/GMFUrC8E8aWoo/giphy.gif" alt="Virtual Hug" width="200">
+      </div>
+      <div class="scrapbook-page" id="page3">
+        <h2 style="font-size: 3rem;">💖 Give a Virtual Hug...!</h2>
+        <p style="font-size: 2rem;">Click and hold the heart to unlock a special secret just for you!</p>
+        <div class="heart-icon" id="heart">💖</div>
+        <div class="secret-message" id="secretMessage">
+          <h2 style="font-size: 2rem;">💌 You’re the plot twist my life didn’t know it needed—and I’m so grateful for it.</h2>
+        </div>
+      </div>
+      
+      <div class="scrapbook-page">
+        <h2>Page 3: You Are Amazing</h2>
+        
+        <p>Spending time with you has been pure chaos and joy—in the best way. Like that time I went full protective mode and verbally destroyed a guy in the granny house. No regrets of doing that. You’ve brought so much laughter, weird adventures, and warmth into my life.😜</p>
+      </div>
+      <div class="scrapbook-page">
+        <h2>Page 4: Fox Game Time!</h2>
+        <p>Let's catch some hearts! 🦊❤️</p>
+        <button class="next-button" onclick="location.href='dasd.html'">Go to Game</button>
+      </div>
+      <div class="scrapbook-page" id="quizPage" style="display: none; flex-direction: column; align-items: center;">
+        <h2>🎓 How Well Do You Know Sankalp?</h2>
+        <div id="quiz-container">
+          <div id="questionBox"></div>
+          <div id="optionsBox"></div>
+          <div id="options-container"></div>
+          <div id="timer">Time Left: <span id="time">10</span>s</div>
+        </div>
+      </div>
+      
+      <div class="scrapbook-page" id="quizSummaryPage" style="display: none;">
+        <h2>📊 Quiz Summary</h2>
+        <p id="quizResult"></p>
+      </div>
+      <div class="scrapbook-page">
+        <h2>Do you want to make one for me too?</h2>
+
+      </div>
+      </div>
+     
+   
+    <div class="nav-buttons">
+      <button class="prev-button" onclick="prevPage()">Previous</button>
+      <button class="next-button" onclick="nextPage()">Next</button>
+
+
+     
+  </div>
+</div>
+
+
+  <script>
+
+const messages = [
+  "Hi, cutie! 🦊",
+  "Boop my nose! 😚",
+  "You’re my favorite human!",
+  "Guess what? I adore you!",
+  "Psst... you’re lovely! 💕",
+  "Feeling foxy today?",
+  "I’ve been waiting for you!",
+  "You look extra cute today!",
+  "Foxes stick together! 🧡",
+  "Love attack incoming! 💘",
+  "You're my cozy corner.",
+  "Snuggles? Always. 🛏️",
+  "Catch me if you can!",
+  "Got any snacks?",
+  "Just a lil fox missin’ you!",
+  "Stay close, okay?",
+  "You're my safe den.",
+  "Tail wags for you! 🐾",
+  "Let’s cause some mischief!",
+  "I’d steal a sock for you!",
+  "Peekaboo! 🫣",
+  "Can I sit on your lap?",
+  "Every day’s better with you!",
+  "Cuddles unlocked! 🧸",
+  "I saved this moment for you.",
+  "Look at me, I’m adorable! 😌",
+  "Wanna build a pillow fort?",
+  "Heart = stolen by you 💝",
+  "You make this den feel like home.",
+  "Tag! You’re it! 🏃‍♀️💨"
+];
+
+
+// Show message after page loads, and hide it after 5 seconds
+window.onload = function() {
+  const messageContainer = document.getElementById("message-container");
+  setTimeout(() => {
+    messageContainer.style.display = "none"; // Hide the message after 5 seconds
+  }, 2000);
+};
+
+// Function to make the fox speak
+function foxSpeak() {
+    if (localStorage.getItem("fox") === "enabled") {
+  // Get a random message from the array
+  const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+
+  // Show the speech bubble
+  const speechBubble = document.getElementById("fox-speech-bubble");
+  
+  const messageElement = document.getElementById("fox-message");
+
+  // Set the fox's message and make the speech bubble visible
+  messageElement.textContent = randomMessage;
+  
+  speechBubble.style.display = "block";
+
+  // Start the tail wagging animation when the fox speaks
+  const foxAvatar = document.getElementById("fox-avatar");
+  foxAvatar.style.animation = "tailWag 1s infinite";
+
+  // Start the ear twitch animation when the fox speaks
+  foxAvatar.style.animation = "earTwitch 2s ease-in-out infinite";
+
+  // Hide the speech bubble after 3 seconds
+  setTimeout(() => {
+    speechBubble.style.display = "none";
+    foxAvatar.style.animation = ""; // Stop the animations after speech
+  }, 4000);
+}
+}
+function showSleepMessage() {
+  const message = document.createElement('div');
+  message.id = "fox-sleep-message";
+  message.textContent = "Zzzzz...";
+  document.getElementById("fox-avatar-container").appendChild(message);
+}
+
+function removeSleepMessage() {
+  const message = document.getElementById("fox-sleep-message");
+  if (message) message.remove();
+}
+
+
+// Add an event listener to make the fox "speak" when clicked
+const foxAvatar = document.getElementById("fox-avatar");
+foxAvatar.addEventListener("click", function() {
+    foxSpeak();
+  
+});
+
+window.onload = function() {
+  const clickMessage = document.getElementById("click-message");
+  setTimeout(() => {
+    clickMessage.style.display = "none";
+  }, 2000);
+};
+
+function startBlinking() {
+  const fox = document.getElementById("fox-avatar");
+
+  function blink() {
+    fox.classList.add("blinking");
+    setTimeout(() => fox.classList.remove("blinking"), 300);
+    const nextBlink = Math.random() * 4000 + 6000; // 5–8 seconds
+    setTimeout(blink, nextBlink);
+  }
+
+  blink();
+}
+
+startBlinking();
+
+const fox = document.getElementById("fox-avatar");
+const speechBubble = document.getElementById("fox-message");
+let inactivityTimer;
+
+const moodMessages = {
+  happy: "Yay! I'm happy you're happy!",
+  sad: "Aww, come cuddle. I'm here for you.",
+  "in-love": "Aww, you're in love? So am I! 💕"
+};
+
+document.querySelectorAll("#mood-selector button").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const mood = btn.getAttribute("data-mood");
+    speechBubble.textContent = moodMessages[mood];
+    showBubble();
+  });
+});
+
+function showBubble() {
+  speechBubble.parentElement.style.display = "block";
+  setTimeout(() => {
+    speechBubble.parentElement.style.display = "none";
+  }, 3000);
+}
+
+// Fox sleeps after 10s of inactivity
+function sleepFox() {
+  fox.src = "fox-sleep23.png"; // change to sleeping fox image
+  showSleepMessage();
+  document.querySelectorAll("#mood-selector button").forEach(btn =>btn.style.display = 'none');
+}
+
+
+function resetInactivity() {
+  if (localStorage.getItem("fox") === "enabled") {
+    clearTimeout(inactivityTimer);
+    inactivityTimer = setTimeout(sleepFox, 60000);
+  }
+}
+
+["click", "mousemove", "keydown"].forEach((evt) =>
+  document.addEventListener(evt, resetInactivity)
+);
+
+// Wake fox on click
+fox.addEventListener("click", () => {
+  if (fox.src.includes("fox-sleep23.png")) {
+    fox.src = "foxbo2t.webp";
+    speechBubble.textContent = "Whew! That nap was good 🦊💤";
+    removeSleepMessage();
+    document.querySelectorAll("#mood-selector button").forEach(btn =>btn.style.display = 'inline-block');
+    showBubble();
+    resetInactivity();
+  }
+});
+
+resetInactivity();
+
+
+const gifts = [
+  { emoji: "💖", message: "Sankalp's Heart for ya" },
+  { emoji: "🌸", message: "Sankalp gave u a flower..." },
+  { emoji: "🧁", message: "A CUPCAKE!" },
+  { emoji: "🧸", message: "A tiny teddy to hug!" },
+  { emoji: "🍫", message: "Chocolate therapy from Sankalp!" },
+  { emoji: "📸", message: "A snapshot of our cutest memory!" },
+  { emoji: "🐾", message: "Fox paw of friendship!" },
+  { emoji: "🫶", message: "Love, handcrafted just for you!" },
+  { emoji: "🍓", message: "Strawberry kisses!" },
+  { emoji: "🎈", message: "A balloon to lift your mood!" },
+  { emoji: "📖", message: "A story about you & me 💫" },
+  { emoji: "🪶", message: "A magical feather from a fox" },
+  { emoji: "🍯", message: "A pot of sweetness (you!)" },
+  { emoji: "💌", message: "A secret love letter 💌" },
+  { emoji: "🫖", message: "Some cozy tea time, just us!" },
+  { emoji: "🔮", message: "A foxy fortune just for you!" },
+{ emoji: "🎀", message: "Tied a ribbon ‘round my love for you!" }
+];
+
+
+function dropGift() {
+  const { emoji, message } = gifts[Math.floor(Math.random() * gifts.length)];
+  const giftEl = document.createElement("div");
+  giftEl.className = "gift";
+  giftEl.style.left = `${fox.offsetLeft + 60}px`;
+  giftEl.innerHTML = `${emoji} <span style="font-size: 0.8rem;">${message}</span>`;
+  document.getElementById("gift-container").appendChild(giftEl);
+
+  setTimeout(() => {
+    giftEl.remove();
+  }, 5000);
+}
+
+setInterval(() => {
+  if (!fox.src.includes("sleep") && localStorage.getItem("fox") == "enabled") {
+  dropGift();
+}
+}, Math.random() * 1200 + 2000);
+
+if (localStorage.getItem("theme") == "light"){
+
+}
+let lastScrollTop = 0;
+let hopTimeout;
+
+window.addEventListener("scroll", () => {
+  // Add hop class
+  fox.classList.add("fox-hop");
+
+  // Remove it after animation completes
+  clearTimeout(hopTimeout);
+  hopTimeout = setTimeout(() => {
+    fox.classList.remove("fox-hop");
+  }, 500);
+});
+    let currentPage = 0;
+    const scrapbook = document.getElementById('scrapbook');
+    const pages = document.querySelectorAll('.scrapbook-page');
+  
+    function nextPage() {
+      if (currentPage < pages.length - 1) {
+        currentPage++;
+        
+        scrapbook.style.transform = `translateX(-${currentPage * 100}%)`;
+
+        if(currentPage === 2) {
+          document.querySelectorAll('.prev-button, .next-button').forEach(btn => btn.style.display = 'none');
+          
+        }
+        if(currentPage === 6){
+          document.querySelectorAll('.prev-button, .next-button').forEach(btn => btn.style.display = 'inline-block');
+        }
+        if(currentPage === 4){
+          const prevButton = document.querySelector('button.prev-button[onclick="prevPage()"]');
+const nextButton = document.querySelector('button.next-button[onclick="nextPage()"]');
+
+if (prevButton) prevButton.style.display = 'none';
+if (nextButton) nextButton.style.display = 'none';
+        }
+        if(currentPage === 5) {
+          startQuiz();
+          const prevButton = document.querySelector('button.prev-button[onclick="prevPage()"]');
+const nextButton = document.querySelector('button.next-button[onclick="nextPage()"]');
+
+if (prevButton) prevButton.style.display = 'none';
+if (nextButton) nextButton.style.display = 'none';
+
+        }  
+    }
+    }
+  
+    function prevPage() {
+      if (currentPage > 0) {
+        currentPage--;
+        scrapbook.style.transform = `translateX(-${currentPage * 100}%)`;
+      }
+    }
+  
+    // Heart secret logic
+    const heart = document.getElementById('heart');
+    const secretMessage = document.getElementById('secretMessage');
+    let heartTimer;
+  
+    heart.addEventListener('mousedown', () => {
+      heartTimer = setTimeout(() => {
+        secretMessage.style.display = 'block';
+        document.querySelectorAll('.prev-button, .next-button').forEach(btn => btn.style.display = 'inline-block');
+
+      }, 1200);
+      
+    });
+  
+    heart.addEventListener('mouseup', () => {
+      clearTimeout(heartTimer);
+    });
+  
+    heart.addEventListener('mouseleave', () => {
+      clearTimeout(heartTimer);
+      
+    });
+
+    var close = document.getElementsByClassName("closebtn");
+var i;
+
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function(){
+    var div = this.parentElement;
+    div.style.opacity = "0";
+   
+  }
+}
+
+
+
+function showSuccessAlert(message) {
+  const alertDiv = document.createElement('div');
+  alertDiv.className = 'alert success';
+
+  alertDiv.innerHTML = `
+    <span class="closebtn">&times;</span>
+    <strong>Success!</strong> ${message}
+  `;
+
+  document.body.appendChild(alertDiv);
+
+  // Close functionality
+  alertDiv.querySelector('.closebtn').onclick = function () {
+    alertDiv.style.display = 'none';
+  };
+
+  setTimeout(() => {
+    close[i].onclick = function(){
+    var div = this.parentElement;
+    div.style.opacity = "0";
+   
+  }
+  }, 5000);
+ 
+}
+if (localStorage.getItem("fox") === "enabled") {
+  // Initialize fox features
+  
+}
+if (localStorage.getItem("fox") !== "enabled") {
+  document.querySelectorAll("#mood-selector button").forEach(btn =>btn.style.display = 'none');
+fox.src = "";
+showBubble();
+fox.src = ""; // or use a transparent image like 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=='
+  fox.style.display = "none"; // Optional: Hide the element entirely
+
+}
+
+
+  
+window.addEventListener('DOMContentLoaded', () => {
+  if (localStorage.getItem('gameCompleted') === 'yes') {
+    currentPage = 3;
+    scrapbook.style.transform = `translateX(-${currentPage * 100}%)`;
+    localStorage.removeItem('gameCompleted'); // Optional: clear flag
+  }
+});
+const quizQuestions = [
+    {
+      question: "What’s is my favorite color?",
+      options: ["Blue", "Red", "Black"],
+      correct: 1,
+    },
+    {
+      question: "Which animal does i like the most?",
+      options: ["Fox", "Dog", "Cat"],
+      correct: 2,
+    },
+    {
+     question: "Which of these does am i find the most relaxing?",
+      options: ["A cold bath", "Watching a movie", "Doing a Hobby"],
+      correct: 2,
+    },
+     {
+     question: "What’s is my favorite season of the year?",
+      options: ["Summer", "Winter", "Monsoon"],
+      correct: 1,
+    },
+     {
+     question: "What’s my guilty pleasure TV show?",
+      options: ["Class", "Breaking Bad ", "Dexter"],
+      correct: 1,
+    },
+      {
+     question: "What’s my most-used app on my phone?",
+      options: ["Games", "Discord", "Instagram"],
+      correct: 1,
+    },
+     {
+     question: "If I could go back and give my younger self one piece of advice, what would it be?",
+      options: ["Take care of your mental health and well-being", "Don’t be afraid to take risks", "Time flies—enjoy every moment!"],
+      correct: 0,
+    },
+     {
+     question: "What do I want people to remember about me?",
+      options: ["That I was always there for them, no matter what", "That I made a positive impact, however small", " That I was someone they could always count on"],
+      correct: 0,
+    },
+     {
+     question: "What do I want to change about my life right now?",
+      options: ["Build stronger connections with friends and family", "Take more time for self-care and reflection", "Focus more on my career and professional goals"],
+      correct: 0,
+    },
+       {
+     question: "What does love mean to me, and how do I express it?",
+      options: ["Love is about showing care and being there for each other", " Love is about sharing experiences and creating memories together", "Love is about understanding and accepting each other’s flaws"],
+      correct: 0,
+    },
+    {
+      question: "Am i Gay?",
+      options: ["", ""],
+      correct: 4,
+    },
+       {
+      question: "Am i a weirdo?",
+      options: ["No", "No[Yes]"],
+      correct: 0,
+    },
+  ];
+
+  let currentQuizIndex = 0;
+  let quizScore = 0;
+  let quizTimer;
+  let quizTimeLeft = 15;
+
+  function startQuiz() {
+  document.getElementById("quizPage").style.display = "flex";
+  document.getElementById("quizSummaryPage").style.display = "none";
+  currentQuizIndex = 0;
+  quizScore = 0;
+  showQuizQuestion();
+}
+
+function showQuizQuestion() {
+  const q = quizQuestions[currentQuizIndex];
+  document.getElementById("questionBox").innerHTML = `<h3>${q.question}</h3>`;
+
+  // Check if the question requires an input field
+  if (q.input) {
+    document.getElementById("optionsBox").innerHTML = `<input type="text" id="answer-input" placeholder="Type your answer...">`;
+  } else {
+    // Display multiple-choice options
+    const optionsHTML = q.options.map((opt, idx) => 
+      `<button class="optionBtn" onclick="checkAnswer(${idx})">${opt}</button>`
+    ).join("");
+    document.getElementById("optionsBox").innerHTML = optionsHTML;
+  }
+
+  quizTimeLeft = 15;
+  document.getElementById("time").innerText = quizTimeLeft;
+  clearInterval(quizTimer);
+  quizTimer = setInterval(updateQuizTimer, 1000);
+}
+
+
+  function smoothRefresh() {
+  const message = document.createElement('div');
+  message.id = 'refresh-message';
+  message.textContent = 'Refreshing...';
+  document.body.appendChild(message);
+
+
+  setTimeout(() => {
+    location.reload();
+  }, 1200); // wait 1.5 seconds before reloading
+}
+
+  function gosetting() {
+  setTimeout(() => {
+    location.href = "settings.html"
+  }, 1200); // wait 1.5 seconds before reloading
+}
+
+
+  function updateQuizTimer() {
+    quizTimeLeft--;
+    document.getElementById("time").innerText = quizTimeLeft;
+    if (quizTimeLeft === 0) {
+      clearInterval(quizTimer);
+      nextQuizQuestion();
+    }
+  }
+
+  function checkAnswer(selected) {
+    clearInterval(quizTimer);
+    const q = quizQuestions[currentQuizIndex];
+    const buttons = document.querySelectorAll(".optionBtn");
+
+    buttons.forEach((btn, idx) => {
+      btn.disabled = true;
+      if (idx === q.correct) {
+        btn.style.backgroundColor = "green";
+      }
+      if (idx === selected && selected !== q.correct) {
+        btn.style.backgroundColor = "black";
+      }
+    });
+
+    if (selected === q.correct) {
+      quizScore++;
+      confettiEffect();
+    }
+
+    setTimeout(nextQuizQuestion, 1500);
+  }
+
+  function nextQuizQuestion() {
+    currentQuizIndex++;
+    if (currentQuizIndex < quizQuestions.length) {
+      showQuizQuestion();
+    } else {
+      showQuizSummary();
+    }
+  }
+
+  function showQuizSummary() {
+    document.getElementById("quizPage").style.display = "none";
+    document.getElementById("quizSummaryPage").style.display = "flex";
+    document.getElementById("quizResult").innerText = `You got ${quizScore} out of ${quizQuestions.length} correct!`;
+    document.querySelectorAll('.next-button').forEach(btn => btn.style.display = 'inline-block');
+
+
+  }
+
+  function confettiEffect() {
+    const confetti = document.createElement("div");
+    confetti.innerText = "🎉";
+    confetti.style.position = "fixed";
+    confetti.style.top = "50%";
+    confetti.style.left = "50%";
+    confetti.style.fontSize = "5rem";
+    confetti.style.transform = "translate(-50%, -50%)";
+    confetti.style.zIndex = 9999;
+    document.body.appendChild(confetti);
+    setTimeout(() => confetti.remove(), 1000);
+  }
+  
+
+
+window.onload = () => {
+  const completed = localStorage.getItem('gameCompleted');
+  if (completed === 'true') {
+    showSuccessAlert('You can continue playing the game by clicking on "Go To Game" or else Click on next to visit more..');
+
+    currentPage++;
+    scrapbook.style.transform = `translateX(-${currentPage * 100}%)`;
+    currentPage++;
+    scrapbook.style.transform = `translateX(-${currentPage * 100}%)`;
+    currentPage++; 
+    scrapbook.style.transform = `translateX(-${currentPage * 100}%)`;
+    currentPage++; 
+    scrapbook.style.transform = `translateX(-${currentPage * 100}%)`;
+
+
+scrapbook.style.transform = `translateX(-${currentPage * 100}%)`;
+document.querySelectorAll('.prev-button, .next-button').forEach(btn => btn.style.display = 'inline-block');
+
+    // Optional: reset the flag
+    localStorage.removeItem('gameCompleted');
+  }
+};
+//test
+//https://www.codewithfaraz.com/article/128/collection-of-100-html-and-css-mini-projects-for-beginners-with-source-code#97-pagination
+//https://www.codewithfaraz.com/article/128/collection-of-100-html-and-css-mini-projects-for-beginners-with-source-code#51-list
+//https://www.codewithfaraz.com/article/128/collection-of-100-html-and-css-mini-projects-for-beginners-with-source-code#21-neon-button
+//https://www.codewithfaraz.com/article/128/collection-of-100-html-and-css-mini-projects-for-beginners-with-source-code#17-to-do-list
+  </script>
+  
+</body>
+</html>
+

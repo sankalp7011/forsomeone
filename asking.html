@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="catbot.png">
+
+<meta charset="UTF-8">
+<title>Do you love me too?</title>
+
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: #ffe6ea;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.container {
+  text-align: center;
+}
+
+h1 {
+  color: #e84118;
+  margin-bottom: 20px;
+}
+
+.buttons {
+  position: relative;
+  margin-top: 20px;
+}
+
+button {
+  border: none;
+  border-radius: 12px;
+  padding: 12px 22px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#yesBtn {
+  background: #2ecc71;
+  color: white;
+  font-size: 1.1em;
+}
+
+#noBtn {
+  background: #ff6b6b;
+  color: white;
+  margin-left: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>Do you love me too?</h1>
+<img src="cat-heart.gif"width:200px; margin:10px auto; display:block;">
+
+
+  <div class="buttons">
+    <button id="yesBtn" onclick="yesClicked()">Yes 💚</button>
+    <button id="noBtn" onclick="noClicked()">Are you sure? 😼</button>
+  </div>
+</div>
+
+<script>
+let clickCount = 0;
+const texts = [
+  "Are you sure?",
+  "Like… really sure?",
+  "This is your last chance 👀",
+  "Okay fine, you asked for it 😼"
+];
+function noClicked() {
+  clickCount++;
+
+  const yesBtn = document.getElementById("yesBtn");
+
+  // Grow button each click
+  let scale = 1 + clickCount * 0.6;
+  document.getElementById("noBtn").innerText = texts[clickCount - 1];
+  yesBtn.style.transform = `scale(${scale})`;
+
+  // Final takeover
+  if (clickCount >= 4) {
+    yesBtn.style.position = "fixed";
+    yesBtn.style.top = "0";
+    yesBtn.style.left = "0";
+    yesBtn.style.width = "100vw";
+    yesBtn.style.height = "100vh";
+    yesBtn.style.fontSize = "2em";
+    yesBtn.innerHTML = "YES 💚";
+    document.getElementById("noBtn").style.display = "none";
+  }
+}
+
+function yesClicked() {
+  // CHANGE THIS to whatever page you want
+  window.location.href = "yes.html";
+}
+</script>
+
+</body>
+<script src="cursor.js"></script>
+</html>

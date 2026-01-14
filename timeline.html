@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Timeline</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style>
+    body {
+      font-family: 'Indie Flower', cursive;
+      background-color: #fff8f0;
+      padding: 2rem;
+      margin: 0;
+      color: #5a3e36;
+    }
+
+    .chapter {
+      margin-bottom: 2rem;
+      border: 2px dashed #ff6b6b;
+      border-radius: 12px;
+      padding: 1rem;
+      background-color: #fff0f0;
+      box-shadow: 4px 4px #ffdcdc;
+    }
+
+    .chapter-title {
+      font-size: 1.8rem;
+      cursor: pointer;
+      margin-bottom: 1rem;
+      background-color: #ffb3b3;
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+      box-shadow: 2px 2px #ffa0a0;
+      transition: background-color 0.3s;
+    }
+
+    .chapter-title:hover {
+      background-color: #ff8a8a;
+    }
+
+    .timeline-content {
+      display: none;
+      flex-direction: column;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    .timeline-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1px solid #ffdcdc;
+      border-radius: 12px;
+      padding: 1rem;
+      background-color: #fff;
+      box-shadow: 2px 2px #ffe0e0;
+      font-size: larger;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .timeline-item h3 {
+      margin-bottom: 0.5rem;
+    }
+    html {
+  scroll-behavior: smooth;
+}
+
+
+    .timeline-item img {
+      width: 300px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 2px 2px #ffcccc;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .chapter-title.active {
+  background-color: #b81a39; /* light pink highl  ight */
+  font-weight: bold;
+  border-left: 4px solid #ff6b6b;
+}
+
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+</head>
+<body>
+  <h1 style="text-align: center; font-size: 2.5rem;">📖 Our Timeline</h1>
+
+  <div class="chapter">
+    <div class="chapter-title" onclick="toggleChapter(this)">🌱 The Beginning</div>
+    <div class="timeline-content">
+      <div class="timeline-item">
+        <h3>November 16, 2024 ( Saturday )</h3>
+        <img src="imgs/first.jpg" alt="Adventure" style="width: 350px; height: auto;">
+      </div>
+      <div class="timeline-item">
+        <h3>LASERS!</h3>
+        <img src="imgs/second.jpg" alt="First Meet">
+      </div>
+      <div class="timeline-item">
+        <h3>Interrogating about Discord</h3>
+        <img src="imgs/third.jpg" alt="First Meet">
+      </div>
+      <div class="timeline-item">
+        <h3>Failed</h3>
+        <img src="imgs/fourth.jpg" alt="Adventure" style="width: 400px; height: auto;">
+      </div>
+      <div class="timeline-item">
+        <h3>Discord</h3>
+        <img src="imgs/eleventh.jpg" alt="First Meet">
+       <p style="font-size: 25px; color: rgb(50, 209, 33);">The title is discord because you gave me your discord id in hideout!</p>
+     
+      </div>
+    </div>
+  </div>
+
+  <div class="chapter">
+    <div class="chapter-title" onclick="toggleChapter(this)">😁 Friends</div>
+    <div class="timeline-content">
+      <div class="timeline-item">
+        <h3>A intruder in our friendship</h3>
+         <img src="imgs/fifth.jpg" alt="Adventure" style="width: 350px; height: 350px;">
+      </div>
+      <div class="timeline-item">
+        <h3>The Starting of Flirting#1</h3>
+        <img src="imgs/sixth.jpg" alt="Laughter Night">
+      </div>
+      <div class="timeline-item">
+        <h3>The Starting of Flirting#2</h3>
+        <img src="imgs/seventh.jpg" alt="Laughter Night">
+      </div>
+      <div class="timeline-item">
+        <h3>My GuestBook 📓</h3>
+       <img src="imgs/ninth.jpg" alt="Adventure" style="width: 700px; height: 400px;">
+      </div>
+      <div class="timeline-item">
+        <h3>I love you?</h3>
+        <img src="imgs/eigth.jpg" alt="Laughter Night">
+      </div>
+      <div class="timeline-item">
+        <h3>The Piano..💔</h3>
+        <img src="imgs/tenth.jpg" alt="Laughter Night">
+        <p style="font-size: 25px; color: rgb(0, 0, 0);">You already know why the title is called "The Piano"</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="chapter">
+    <div class="chapter-title" onclick="toggleChapter(this)">💌 Discord</div>
+    <div class="timeline-content">
+      <div class="timeline-item">
+        <h3>First message on Discord</h3>
+        <img src="imgs/twelve.jpg" alt="Surprise Gift">
+      </div>
+      <div class="timeline-item">
+        <h3>First picture of your Cat 🐱</h3>
+        <img src="imgs/thirt.jpg" alt="Kind Words">
+      </div>
+      <div class="timeline-item">
+        <h3>Revealing of my country 🌍</h3>
+        <img src="imgs/fouteen.jpg" alt="Kind Words">
+      </div>
+      <div class="timeline-item">
+        <h3>An incident.....</h3>
+        <img src="imgs/fifteen.jpg" alt="Kind Words">
+      </div>
+      <div class="timeline-item">
+        <h3>Chocolate 🍫</h3>
+        <img src="imgs/sixteen.jpg" alt="Kind Words">
+      </div>
+      <div class="timeline-item">
+        <h3>I love you girl ♥️♥️</h3>
+        <img src="imgs/sevent.jpg" alt="Kind Words">
+      </div>
+    </div>
+  </div>
+  
+
+      
+    </div>
+  </div>
+  
+
+  <script>
+    function toggleChapter(element) {
+      const content = element.nextElementSibling;
+      const allContents = document.querySelectorAll('.timeline-content');
+
+      allContents.forEach(c => {
+        if (c !== content) c.style.display = 'none';
+      });
+
+      content.style.display = content.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+
+  document.querySelectorAll('.chapter-title').forEach(title => {
+    title.addEventListener('click', () => {
+      const content = title.nextElementSibling;
+      const isOpen = content.style.display === 'block';
+
+      // Collapse all chapters and remove active state
+      document.querySelectorAll('.chapter-content').forEach(c => c.style.display = 'none');
+      document.querySelectorAll('.chapter-title').forEach(t => t.classList.remove('active'));
+
+      // If it wasn't open, open it and set active
+      if (!isOpen) {
+        content.style.display = 'block';
+        title.classList.add('active');
+        title.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+
+
+  </script>
+</body>
+ <script src="cursor.js"></script>
+</html>

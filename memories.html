@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Interactive Heart Garden</title>
+  <style>
+    body { margin: 0; overflow: hidden; }
+    canvas { display: block; }
+    #memoryBox {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.95);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #0003;
+      display: none;
+      z-index: 1;
+      font-family: sans-serif;
+    }
+    #memoryBox h2 {
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+<div id="memoryBox">
+  <h2 id="memoryTitle">Memory Title</h2>
+  <p id="memoryText">This is a lovely memory.</p>
+</div>
+<!-- Load THREE.js first -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.149.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.149.0/examples/js/controls/FirstPersonControls.js"></script>
+
+
+
+
+<script type="module">
+let camera, scene, renderer, controls, raycaster;
+let trees = [], memories = [];
+
+
+init();
+animate();
+
+function init() {
+  scene = new THREE.Scene();
+  scene.background = new THREE.Color(0xa0e0d0);
+
+  camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+  camera.position.set(0, 1.6, 5);
+
+  renderer = new THREE.WebGLRenderer({antialias: true});
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.body.appendChild(renderer.domElement);
+
+  // Ground
+  const ground = new THREE.Mesh(
+    new THREE.PlaneGeometry(100, 100),
+    new THREE.MeshLambertMaterial({ color: 0x558855 })
+  );
+  ground.rotation.x = -Math.PI / 2;
+  scene.add(ground);
+
+  // Light
+  const light = new THREE.DirectionalLight(0xffffff, 1);
+  light.position.set(5, 10, 7.5);
+  scene.add(light);
+  scene.add(new THREE.AmbientLight(0x404040));
+
+  // Trees
+  const treeGeometry = new THREE.CylinderGeometry(0.2, 0.5, 2, 8);
+  const leavesGeometry = new THREE.SphereGeometry(1, 8, 8);
+  const barkMaterial = new THREE.MeshLambertMaterial({ color: 0x8B4513 });
+  const leafMaterial = new THREE.MeshLambertMaterial({ color: 0x228B22 });
+
+  for (let i = 0; i < 30; i++) {
+    const trunk = new THREE.Mesh(treeGeometry, barkMaterial);
+    const leaves = new THREE.Mesh(leavesGeometry, leafMaterial);
+    const x = (Math.random() - 0.5) * 80;
+    const z = (Math.random() - 0.5) * 80;
+    trunk.position.set(x, 1, z);
+    leaves.position.set(x, 3, z);
+    scene.add(trunk);
+    scene.add(leaves);
+    trees.push(trunk);
+    memories.push({
+      title: `Memory #${i + 1}`,
+      text: `A beautiful story happened here under tree ${i + 1}.`
+    });
+  }
+
+  // Raycaster for clicks
+  raycaster = new THREE.Raycaster();
+  document.addEventListener('click', onDocumentClick);
+
+  // Controls
+  controls = new THREE.FirstPersonControls(camera, renderer.domElement);
+controls.movementSpeed = 10;
+controls.lookSpeed = 0.1;
+
+  document.body.addEventListener('click', () => controls.lock());
+  scene.add(controls.getObject());
+
+  const onKeyDown = (e) => {
+    switch(e.code) {
+      case 'KeyW': controls.moveForward(0.5); break;
+      case 'KeyS': controls.moveForward(-0.5); break;
+      case 'KeyA': controls.moveRight(-0.5); break;
+      case 'KeyD': controls.moveRight(0.5); break;
+    }
+  };
+  document.addEventListener('keydown', onKeyDown);
+
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+}
+
+function onDocumentClick(event) {
+  raycaster.setFromCamera({
+    x: (event.clientX / window.innerWidth) * 2 - 1,
+    y: -(event.clientY / window.innerHeight) * 2 + 1
+  }, camera);
+
+  const intersects = raycaster.intersectObjects(trees);
+  if (intersects.length > 0) {
+    const index = trees.indexOf(intersects[0].object);
+    const memory = memories[index];
+    if (memory) {
+      document.getElementById('memoryTitle').innerText = memory.title;
+      document.getElementById('memoryText').innerText = memory.text;
+      document.getElementById('memoryBox').style.display = 'block';
+    }
+  } else {
+    document.getElementById('memoryBox').style.display = 'none';
+  }
+}
+
+function animate() {
+  requestAnimationFrame(animate);
+  renderer.render(scene, camera);
+}
+</script>
+</body>
+</html>

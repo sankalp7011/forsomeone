@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="catbot.png">
+
+<meta charset="UTF-8">
+<title>Confession</title>
+
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #ff6b81, #a55eea);
+  color: white;
+  text-align: center;
+}
+.front-cat {
+  width: 500px;
+  animation: pop 0.6s ease-out;
+}
+.angry-cat {
+  width: 200px;
+  animation: pop 0.6s ease-out;
+}
+.gift-content {
+  width: 250px;
+  left: 20%;
+  position: fixed;
+}
+.gift-content2 {
+  width: 250px;
+  right: 20%;
+  position: fixed;
+}
+#correctText, #wrongText {
+  margin-top: 20px;
+  font-size: 1.1em;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pop {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.page {
+  display: none;
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+.page.active {
+  display: block;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1em;
+  cursor: pointer;
+  margin: 10px;
+  background: #ff4757;
+  color: white;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.back-btn {
+    position: static;
+    top: -10px;
+  background: #57606f;
+}
+.cnt-btn {
+    position: static;
+    right: -10px;
+  background: #57606f;
+}
+
+/*img {
+  max-width: 180px;
+  margin: 15px;
+}*/
+.no-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10x;
+  margin-top: -10px;
+}
+
+.heart-icon {
+      font-size: 4rem;
+      cursor: pointer;
+      margin: 2rem 0;
+      transition: transform 0.3s ease;
+    }
+
+    .heart-icon:hover {
+      transform: scale(1.6);
+    }
+     .secret-message {
+      display: none;
+      font-size: 2rem;
+      margin-top: -2.5rem;
+    }
+
+/* Gifts */
+.gifts img {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.gifts img:hover {
+  transform: scale(1.1);
+}
+
+/* Hug text */
+#hugText {
+  display: none;
+  margin-top: 20px;
+  font-size: 1.1em;
+}
+
+/* Tic Tac Toe */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 80px);
+  gap: 8px;
+  justify-content: center;
+  margin: 20px auto;
+}
+.choice-buttons {
+  margin-top: -40px; /* move up */
+}
+
+.cell {
+  width: 80px;
+  height: 80px;
+  background: rgba(255,255,255,0.2);
+  font-size: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+
+<div class="page active" id="page-start">
+  <h1 style="line-height: 1.4; text-align: center;">
+    There is something I’ve been wanting to say…  
+    <br>can I say it?
+  </h1>
+  
+
+  <!-- CAT IMAGE -->
+  <img src="cat-love.png" class ="front-cat">
+
+
+  <div class="choice-buttons">
+    <button onclick="showPage('page-gifts')">Yes 💖</button>
+    <button onclick="showPage('page-no')">No 😐</button>
+  </div>
+</div>
+
+
+<!-- PAGE NO -->
+<div class="page" id="page-no">
+  <h1>HOW DARE YOU</h1>
+  <p>Excuse me??</p>
+  <div class="no-content">
+  <img src="cat-angry.png" class="angry-cat">
+  <button class="back-btn" onclick="showPage('page-start')">Try Again</button>
+</div>
+</div>
+
+<!-- GIFTS PAGE -->
+<div class="page" id="page-gifts">
+  <h1>I brought you something 🎁</h1>
+  <div class="gifts">
+    <img src="gift.png" onclick="showPage('page-hug')" class="gift-content">
+    <img src="gift.png" onclick="showPage('page-ttt')" class="gift-content2">
+  </div>
+  <br>
+  <button class="back-btn" onclick="showPage('page-start')">Back</button>
+  <button class="cnt-btn" onclick="location.href='asking.html'">
+  Continue [Open both the presents first]
+</button>
+
+</div>
+
+<!-- HUG PAGE -->
+<div class="page" id="page-hug">
+  <h1>💖 Give a Virtual Hug...!</h1>
+  <p style="font-size: 2rem;">Click and hold the heart to give a hug...</p>
+  <div class="heart-icon" id="heart">💖</div>
+        <div class="secret-message" id="secretMessage">
+          <h2 style="font-size: 2rem;">I think this is the part where i stop pretending that im doing this for fun and laughs and reveal i have fall for you... <span style="color: red;">I LOVE YOU</span></h2>
+          
+        </div>
+
+  <button class="back-btn" onclick="showPage('page-gifts')">Back</button>
+</div>
+
+<!-- TIC TAC TOE PAGE -->
+ <div class="page" id="page-ttt">
+  <h1>Complete it ❤️</h1>
+
+<div class="grid">
+  <div class="cell">❤️</div>
+  <div class="cell">✖</div>
+  <div class="cell" onclick="placeHeart(this)"></div>
+
+  <div class="cell">✖</div>
+  <!-- CENTER (correct one) -->
+  <div class="cell correct" onclick="placeHeart(this)"></div>
+  <div class="cell">✖</div>
+
+  <div class="cell" onclick="placeHeart(this)"></div>
+  <div class="cell">✖</div>
+  <div class="cell">❤️</div>
+</div>
+<p id="correctText" style="display:none;">
+    You WON...my <span style="color: red;">heart</span></h2> and it feels like it was always meant to be yours
+  </p>
+
+  <p id="wrongText" style="display:none;">
+    Hmm… close, but my heart only fits in one place 😉
+  </p>
+
+  <button class="back-btn" onclick="showPage('page-gifts')">Back</button>
+
+
+  <!-- EDIT TEXT HERE -->
+
+
+</div>
+
+<script>
+let heartPlaced = false;
+
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+ const heart = document.getElementById('heart');
+    const secretMessage = document.getElementById('secretMessage');
+    let heartTimer;
+  
+    heart.addEventListener('mousedown', () => {
+      heartTimer = setTimeout(() => {
+        secretMessage.style.display = 'block';
+        document.querySelectorAll('.prev-button, .next-button').forEach(btn => btn.style.display = 'inline-block');
+
+      }, 1200);
+      
+    });
+  
+    heart.addEventListener('mouseup', () => {
+      clearTimeout(heartTimer);
+    });
+  
+    heart.addEventListener('mouseleave', () => {
+      clearTimeout(heartTimer);
+      
+    });
+
+function startHug() {
+  document.getElementById('hugText').style.display = 'block';
+}
+
+function endHug() {
+  // optional: keep it visible
+}
+
+function placeHeart(cell) {
+  // Stop if already filled
+  if (cell.innerHTML !== "" || heartPlaced) return;
+
+
+  // Place heart
+  cell.innerHTML = "❤️";
+  heartPlaced = true;
+
+
+  // Hide both texts first
+  document.getElementById("correctText").style.display = "none";
+  document.getElementById("wrongText").style.display = "none";
+
+  // Check if correct cell
+  if (cell.classList.contains("correct")) {
+    document.getElementById("correctText").style.display = "block";
+  } else {
+    document.getElementById("wrongText").style.display = "block";
+  }
+}
+</script>
+
+</body>
+<script src="cursor.js"></script>
+</html>

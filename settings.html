@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="catbot.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Settings</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background-color: #fff;
+      color: #333;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .setting {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    select {
+      font-size: 1rem;
+      padding: 0.5rem;
+    }
+
+    .dark {
+      background-color: #222;
+      color: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+  <h1>⚙️ Settings</h1>
+
+  <div class="setting">
+    <label for="foxToggle">😺 Cat Avatar:</label>
+    <select id="foxToggle">
+      <option value="enabled">Enabled</option>
+      <option value="disabled">Disabled</option>
+    </select>
+  </div>
+
+  <div class="setting">
+    <label for="themeToggle">🎨 Theme:</label>
+    <select id="themeToggle">
+      <option value="light">Bright</option>
+      <option value="dark">Dark</option>
+    </select>
+  </div>
+  <div class="setting">
+    <button onclick="location.href='mainweb.html'" style="padding: 0.7rem 1.5rem; font-size: 1rem; background-color: #ff6b6b; color: white; border: none; border-radius: 8px; cursor: pointer;">
+      🔙 Back to Main Site
+    </button>
+  </div>
+
+  <script>
+    // Load saved preferences
+    window.onload = function() {
+      const foxStatus = localStorage.getItem("fox") || "enabled";
+      const theme = localStorage.getItem("theme") || "light";
+
+      document.getElementById("foxToggle").value = foxStatus;
+      document.getElementById("themeToggle").value = theme;
+
+      if (theme === "dark") document.body.classList.add("dark");
+    };
+
+    document.getElementById("foxToggle").addEventListener("change", function() {
+      localStorage.setItem("fox", this.value);
+    });
+
+    document.getElementById("themeToggle").addEventListener("change", function() {
+      const selected = this.value;
+      localStorage.setItem("theme", selected);
+      document.body.classList.toggle("dark", selected === "dark");
+    });
+  </script>
+</body>
+ <script src="cursor.js"></script>
+</html>

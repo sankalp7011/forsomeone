@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="catbot.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Catch the Falling Heart</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive;
+      background: linear-gradient(to bottom right, #ffe5e5, #fff5f5);
+
+      overflow: hidden;
+      -webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+-o-user-select: none;
+user-select: none;
+  
+    }
+
+    .floating-heart {
+      position: absolute;
+      font-size: 1.5em;
+      opacity: 0.3;
+      animation: float 10s linear infinite;
+    }
+
+    @keyframes float {
+      0% {
+        bottom: -50px;
+        transform: translateX(0);
+      }
+      100% {
+        bottom: 100vh;
+        transform: translateX(100px);
+      }
+    }
+
+    h1 {
+      text-align: center;
+      color: #b11226;
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+     h2 {
+      text-align: center;
+      color: #b11226;
+      font-size: 1.0em;
+      margin-top: 10px;
+    }
+
+    #score {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 1.3em;
+       color: #8b1e1e;
+      background: white;
+      padding: 6px 16px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    body {
+  transform: scale(0.8);
+  
+}
+    #gameArea {
+      position: relative;
+      width: 360px;
+      height: 500px;
+      margin: 40px auto;
+       background-color: #fff2f2;
+  border: 6px dashed #d45a5a;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    #fox {
+      position: absolute;
+      bottom: 10px;
+      width: 50px;
+      height: 50px;
+      font-size: 2.2em;
+      text-align: center;
+      line-height: 50px;
+      user-select: none;
+      left: 155px;
+    }
+
+    .falling {
+      position: absolute;
+      top: 0;
+      width: 30px;
+      height: 30px;
+      font-size: 1.8em;
+      text-align: center;
+      line-height: 30px;
+      user-select: none;
+    }
+
+    #countdown {
+      font-size: 3em;
+      color: #b11226;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    #startBtn {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 22px;
+      font-size: 1.2em;
+      background-color: #c0392b;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      cursor: pointer;
+    }
+
+    #startBtn:hover {
+      background-color: #ff1493;
+    }
+
+    #finalScreen {
+      display: none;
+      text-align: center;
+    }
+
+    #finalScore {
+      font-size: 1.8em;
+      color: #c2185b;
+      margin-top: 20px;
+    }
+
+    #tryAgainBtn {
+      padding: 10px 22px;
+      background-color: #c0392b;
+
+      color: white;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    #tryAgainBtn:hover {
+      background-color: #ff1493;
+    }
+    
+    .control-btn {
+  font-size: 3.0em;
+  padding: 5px 18px;
+  margin: 5px;
+  background-color: #c0392b;
+
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 10px 10px rgba(0,0,0,0.15);
+  touch-action: manipulation; /* Improves responsiveness */
+}
+
+.control-btn:active {
+  background-color: #ff1493;
+}
+
+  </style>
+</head> 
+<body>
+
+  <h1>Catch the Hearts 💖</h1>
+  <h2>Use arrow keys to move the car</h2>
+  <div id="score">Score: 0</div>
+  <div id="countdown"></div>
+  <button id="startBtn" onclick="startCountdown()">Start Game</button>
+
+  <div id="gameArea">
+    <div id="fox">😾</div>
+  </div>
+<div id="controls" style="text-align: center; margin-top: 20px;">
+  <button id="leftBtn" class="control-btn">⬅️</button>
+  <button id="rightBtn" class="control-btn">➡️</button>
+</div>
+  <div id="finalScreen">
+    <div id="finalScore">Final Score: 0</div>
+    <button id="tryAgainBtn" onclick="restartGame()">Try Again</button>
+  </div>
+    <!-- ADD this inside your <body> just above <script> tag -->
+      <div id="milestoneScreen" style="display: none; text-align: center; position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%); background: fff1f1; padding: 30px; border-radius: 16px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); z-index: 1000; font-family: 'Comic Sans MS', cursive, sans-serif;">
+        <h2 style="color: #d6336c; font-size: 2em;">🎉 You've reached 21 points!</h2>
+        <p style="font-size: 1.2em; color: #444;">You can continue playing or go to the next part of the page.</p>
+        
+        <div style="margin-top: 20px;">
+          <button onclick="resumeGame()" style="margin: 10px; padding: 12px 24px; background: #ff6b81; color: white; border: none; border-radius: 10px; font-size: 1em; box-shadow: 0 4px 10px rgba(0,0,0,0.15); cursor: pointer; transition: 0.3s;">
+            🕹️ Keep Playing
+          </button>
+          <button onclick="location.href='mainweb.html'" style="margin: 10px; padding: 12px 24px; background: #ffa502; color: white; border: none; border-radius: 10px; font-size: 1em; box-shadow: 0 4px 10px rgba(0,0,0,0.15); cursor: pointer; transition: 0.3s;">
+            🌟 Go to Next Page
+          </button>
+        </div>
+      </div>
+      
+      
+      <!-- Continue button -->
+      <button id="continueBtn" onclick="location.href='mainweb.html'"
+        style="display: none; position: fixed; top: 50px; right: 20px; padding: 10px 16px; font-size: 1em; background: #d6336c; color: white; border: none; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer; z-index: 999;">
+        Continue →
+      </button>
+      
+
+
+
+
+  <script>
+    const fox = document.getElementById('fox');
+    const scoreDisplay = document.getElementById('score');
+    const countdown = document.getElementById('countdown');
+    const gameArea = document.getElementById('gameArea');
+    const startBtn = document.getElementById('startBtn');
+    const finalScreen = document.getElementById('finalScreen');
+    const finalScoreDisplay = document.getElementById('finalScore');
+    
+
+    let foxX = 155;
+    let currentFace = '😾';
+    let score = 0;
+    let gameRunning = false;
+    let fallInterval;
+    let speed = 1000;
+    let keys = {};
+    let moveLoop;
+
+    document.addEventListener('keydown', (e) => keys[e.key] = true);
+    document.addEventListener('keyup', (e) => keys[e.key] = false);
+    
+    function setCatFace(face, duration = 300) {
+  currentFace = face;
+  fox.textContent = currentFace;
+
+  if (duration > 0) {
+    setTimeout(() => {
+      currentFace = '😾';
+      fox.textContent = currentFace;
+    }, duration);
+  }
+}
+
+
+    function smoothMove() {
+  moveLoop = setInterval(() => {
+    if (!gameRunning) return;
+
+    if (keys['ArrowLeft'] && foxX > 0) foxX -= 4;
+    if (keys['ArrowRight'] && foxX < gameArea.clientWidth - 50) foxX += 4;
+
+    fox.style.left = `${foxX}px`;
+    fox.textContent = currentFace; // 🔑 THIS LINE FIXES IT
+  }, 16);
+}
+
+    /*function dropItem() {
+  if (!gameRunning) return;
+
+  const item = document.createElement('div');
+  item.classList.add('falling');
+
+  const isBomb = Math.random() < 0.4;
+  item.textContent = isBomb ? '💣' : '❤️';
+  item.dataset.type = isBomb ? 'bomb' : 'heart';
+
+  const x = Math.random() * (gameArea.clientWidth - 30);
+  item.style.left = `${x}px`;
+  gameArea.appendChild(item);
+
+  let y = 0;
+  const fall = setInterval(() => {
+    if (!gameRunning) return;
+
+    y += 3;
+    item.style.top = `${y}px`;
+
+    const itemRect = item.getBoundingClientRect();
+    const foxRect = fox.getBoundingClientRect();
+
+    if (
+      itemRect.bottom >= foxRect.top &&
+      itemRect.left < foxRect.right &&
+      itemRect.right > foxRect.left
+    ) {
+      clearInterval(fall);
+      gameArea.removeChild(item);
+
+      if (item.dataset.type === 'heart') {
+        score++;
+        scoreDisplay.textContent = `Score: ${score}`;
+        setCatFace('😠', 4000); // ❤️ happy cat
+      } else {
+        setCatFace('🙀', 0); // 💣 shocked cat
+        setTimeout(endGame, 100000);
+      }
+    }
+
+    if (y > gameArea.clientHeight) {
+      clearInterval(fall);
+      if (gameArea.contains(item)) gameArea.removeChild(item);
+    }
+  }, speed / 100);
+}*/
+
+
+    function startGame() {
+      gameRunning = true;
+      foxX = 155;
+      fox.style.left = `${foxX}px`;
+      score = 0;
+      scoreDisplay.textContent = `Score: ${score}`;
+      scoreDisplay.style.display = 'block';
+      gameArea.style.display = 'block';
+      finalScreen.style.display = 'none';
+
+      fallInterval = setInterval(() => {
+        dropItem();
+        dropItem(); // more hearts
+      }, 700);
+
+      setInterval(() => {
+        if (speed > 500) speed -= 100;
+      }, 30000);
+    }
+
+    function endGame() {
+  clearInterval(fallInterval);
+  clearInterval(moveLoop);
+  gameRunning = false;
+  scoreDisplay.style.display = 'none';
+  gameArea.style.display = 'none';
+  finalScreen.style.display = 'block';
+  finalScoreDisplay.textContent = `Final Score: ${score}`;
+
+  // ✅ Add fetch here to log score
+  console.log('Logging final score...');
+
+  fetch('http://localhost:3000/save-quiz-result', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      name: 'Catch The falling heart',
+      score: score,
+      total: score
+    })
+  })
+  .then(response => response.text())
+  .then(data => {
+    console.log('Score log saved:', data);
+  })
+  .catch(err => {
+    console.error('Error logging score:', err);
+  });
+}
+
+
+    function startCountdown() {
+      startBtn.style.display = 'none';
+      countdown.textContent = "3";
+      let count = 3;
+      const timer = setInterval(() => {
+        count--;
+        countdown.textContent = count > 0 ? count : count === 0 ? "Go!" : "";
+        if (count < 0) {
+          clearInterval(timer);
+          countdown.textContent = "";
+          startGame();
+          smoothMove();
+        }
+      }, 1000);
+    }
+
+    function restartGame() {
+      finalScreen.style.display = 'none';
+      startCountdown();
+    }
+
+    // Add floating hearts for background
+    for (let i = 0; i < 7; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('floating-heart');
+      heart.textContent = '😼';
+      heart.style.left = `${Math.random() * 100}vw`;
+      heart.style.animationDuration = `${5 + Math.random() * 10}s`;
+      document.body.appendChild(heart);
+    }
+
+
+    let milestoneReached = false;
+
+function dropItem() {
+  if (!gameRunning) return;
+
+  const item = document.createElement('div');
+  item.classList.add('falling');
+
+  const isBomb = Math.random() < 0.4;
+  item.textContent = isBomb ? '💣' : '❤️';
+  item.dataset.type = isBomb ? 'bomb' : 'heart';
+
+  const x = Math.random() * (gameArea.clientWidth - 30);
+  item.style.left = `${x}px`;
+  gameArea.appendChild(item);
+
+  let y = 0;
+  const fall = setInterval(() => {
+    if (!gameRunning) return;
+    y += 3;
+    item.style.top = `${y}px`;
+
+    const itemRect = item.getBoundingClientRect();
+    const foxRect = fox.getBoundingClientRect();
+
+    if (
+      itemRect.bottom >= foxRect.top &&
+      itemRect.left < foxRect.right &&
+      itemRect.right > foxRect.left
+    ) {
+      clearInterval(fall);
+      gameArea.removeChild(item);
+
+      if (item.dataset.type === 'heart') {
+        score++;
+        scoreDisplay.textContent = `Score: ${score}`;
+        setCatFace('😸', 1000); // ❤️ happy cat
+        if (score === 21 && !milestoneReached) showMilestone();//uno
+      } else {
+        setCatFace('🙀', 0); // 💣 shocked cat
+         gameRunning = false;
+        setTimeout(endGame, 1500);
+      }
+    }
+
+    if (y > gameArea.clientHeight) {
+      clearInterval(fall);
+      if (gameArea.contains(item)) gameArea.removeChild(item);
+    }
+  }, speed / 100);
+}
+
+function showMilestone() {
+  milestoneReached = true;
+  gameRunning = false;
+  clearInterval(fallInterval);
+  localStorage.setItem('gameCompleted', 'true');
+  currentPage = 10;
+  document.getElementById('milestoneScreen').style.display = 'block';
+}
+
+function resumeGame() {
+  document.getElementById('milestoneScreen').style.display = 'none';
+  gameRunning = true;
+  document.getElementById('continueBtn').style.display = 'block';
+  fallInterval = setInterval(() => {
+    dropItem();
+    dropItem(); // more items
+  }, 700);
+}
+const leftBtn = document.getElementById('leftBtn');
+const rightBtn = document.getElementById('rightBtn');
+
+function moveFoxLeft() {
+  if (foxX > 0) {
+    foxX -= 20;
+    fox.style.left = `${foxX}px`;
+  }
+}
+
+function moveFoxRight() {
+  if (foxX < gameArea.clientWidth - 50) {
+    foxX += 20;
+    fox.style.left = `${foxX}px`;
+  }
+}
+
+// Support both click and touch
+leftBtn.addEventListener('mousedown', moveFoxLeft);
+rightBtn.addEventListener('mousedown', moveFoxRight);
+
+leftBtn.addEventListener('touchstart', function (e) {
+  e.preventDefault(); // prevent ghost click
+  moveFoxLeft();
+});
+rightBtn.addEventListener('touchstart', function (e) {
+  e.preventDefault();
+  moveFoxRight();
+});
+
+document.body.style.zoom = "90%";
+
+    document.addEventListener("visibilitychange", function () {
+  if (document.hidden) {
+    console.log("User switched tab or minimized the window.");
+    gameRunning = false;
+  } else {
+    console.log("User came back to the tab!");
+    gameRunning = true;
+  }
+});
+  </script>
+</body>
+ <script src="cursor.js"></script>
+</html>

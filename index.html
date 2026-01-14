@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="catbot.png">
+
+<meta charset="UTF-8">
+<title>Loading...</title>
+
+<style>
+ body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  font-family: "Comic Sans MS", cursive;
+
+  /* softer red-purple that contrasts better */
+  background: linear-gradient(
+    135deg,
+    #2a0a2e,
+    #5a1235,
+    #8b1e3f
+  );
+}
+
+
+  /* CLOUDS */
+  .cloud {
+    position: absolute;
+    background: rgba(255,255,255,0.7);
+    border-radius: 50px;
+    animation: cloudMove linear infinite;
+  }
+
+  .cloud::before,
+  .cloud::after {
+    content: "";
+    position: absolute;
+    background: rgba(255,255,255,0.7);
+    border-radius: 50%;
+  }
+
+  .cloud::before {
+    width: 60%;
+    height: 60%;
+    top: -20%;
+    left: 10%;
+  }
+
+  .cloud::after {
+    width: 60%;
+    height: 60%;
+    top: -20%;
+    right: 10%;
+  }
+
+  @keyframes cloudMove {
+    from { transform: translateX(-200px); }
+    to { transform: translateX(120vw); }
+  }
+
+  /* KITTY */
+  .kitty {
+  position: absolute;
+  top: 190px;
+  left: -180px;
+  width: 500px;
+  z-index: 10;
+
+  /* glow for contrast */
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.35));
+
+  animation:
+    flyIn 1.3s ease-out forwards,
+    pauseMid 0.9s linear 1.3s forwards,
+    flyOut 1.3s ease-in 2.2s forwards,
+    float 1.2s ease-in-out infinite;
+
+  transform: scaleX(-1);
+}
+
+
+  @keyframes flyIn {
+    from { left: -180px; }
+    to { left: 42%; }
+  }
+
+  @keyframes pauseMid {
+    from { left: 42%; }
+    to { left: 42%; }
+  }
+
+  @keyframes flyOut {
+    from { left: 42%; }
+    to { left: 110%; }
+  }
+
+  @keyframes float {
+    0% { transform: scaleX(-1) translateY(0); }
+    50% { transform: scaleX(-1) translateY(-8px); }
+    100% { transform: scaleX(-1) translateY(0); }
+  }
+
+  /* TEXT */
+  .text-wrap {
+    position: absolute;
+    bottom: 90px;
+    width: 100%;
+    text-align: center;
+    z-index: 5;
+  }
+
+  #typingText {
+    font-size: 22px;
+    color: #ffd6e8;
+    white-space: nowrap;
+  }
+</style>
+</head>
+
+<body>
+
+<!-- CLOUDS (start immediately) -->
+<div class="cloud" style="width:160px;height:60px;top:60px;animation-duration:18s;"></div>
+<div class="cloud" style="width:120px;height:45px;top:130px;animation-duration:14s;"></div>
+<div class="cloud" style="width:200px;height:70px;top:210px;animation-duration:22s;"></div>
+<div class="cloud" style="width:100px;height:40px;top:300px;animation-duration:16s;"></div>
+
+<!-- KITTY -->
+<img src="kitty1.png" class="kitty" alt="kitty flying">
+
+<!-- TEXT -->
+<div class="text-wrap">
+  <p id="typingText"></p>
+</div>
+
+<script>
+  const text = "Loading something special for youuuu................";
+  let i = 0;
+
+  function typeText() {
+    if (i < text.length) {
+      document.getElementById("typingText").innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typeText, 70);
+    }
+  }
+
+  typeText();
+
+  /* redirect after 3.5 seconds */
+  setTimeout(() => {
+    window.location.href = "mainweb.html";
+  }, 4000);
+</script>
+
+</body>
+<script src="cursor.js"></script>
+</html>

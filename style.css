@@ -1,0 +1,62 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #ffe6e6, #fff);
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  #gameContainer {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  /* Heart falling */
+  .heart {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: red;
+    transform: rotate(45deg);
+    animation: fall linear;
+    border-radius: 50% 50% 0 0;
+    box-shadow: -15px 15px 0 0 red;
+  }
+  
+  @keyframes fall {
+    from {
+      top: -50px;
+    }
+    to {
+      top: 100vh;
+    }
+  }
+  
+  /* Catcher (basket) */
+  #catcher {
+    position: absolute;
+    bottom: 20px;
+    width: 80px;
+    height: 30px;
+    background: #e60026;
+    border-radius: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: left 0.05s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Score display */
+  #score {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: #e60026;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    box-shadow: 0 5px 10px rgba(255, 0, 76, 0.2);
+  }
+  

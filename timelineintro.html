@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome Uno</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(145deg, #ffe6e6, #fffafc);
+      font-family: 'Quicksand', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .typing-container {
+      background-color: rgba(255, 240, 245, 0.7);
+      border-radius: 25px;
+      padding: 3rem;
+      box-shadow: 0 0 30px rgba(255, 182, 193, 0.5);
+      max-width: 90%;
+      text-align: center;
+    }
+
+    .typing-text {
+      font-size: 1.6rem;
+      font-family: 'Pacifico', cursive;
+      color: #d14d72;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid #d14d72;
+      width: 0;
+      animation: typing 4s steps(40, end) forwards, blink 0.75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      from, to { border-color: transparent; }
+      50% { border-color: #d14d72; }
+    }
+
+    .continue-btn {
+      margin-top: 2rem;
+      padding: 0.8rem 2rem;
+      font-size: 1.2rem;
+      background-color: #ffb6c1;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: transform 0.3s, background-color 0.3s;
+      font-family: 'Quicksand', sans-serif;
+      display: none;
+    }
+
+    .continue-btn:hover {
+      background-color: #ff87a0;
+      transform: scale(1.05);
+    }
+    .heart {
+  position: fixed;
+  bottom: -100px;
+  font-size: 24px;
+  color: #ff6fa5;
+  animation: float 8s infinite ease-in;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+.typing-text {
+  background: linear-gradient(to right, #ff6fa5, #ffb6c1, #ffd1dc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  max-width: 2000px;
+  font-size: larger;
+}
+body {
+background-image: url("https://www.transparenttextures.com/patterns/paper-1.png") no-repeat center center fixed;
+  background-size: cover;
+}
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.typing-container {
+  position: relative;
+  overflow: visible;
+}
+
+.heart-peek {
+  position: absolute;
+  left: -30px;
+  bottom: 10px;
+  font-size: 2.5rem;
+  z-index: 1;
+  animation: heartPeek 2s ease-out;
+}
+
+@keyframes heartPeek {
+  0% {
+    transform: translateX(-50%) scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+}
+#emojiSwap {
+  display: inline-block;
+  transition: opacity 0.5s ease;
+  opacity: 1;
+  font-size: 2.5rem;
+}
+
+
+
+
+
+  </style>
+</head>
+<body>
+  <script src="https://cdn.jsdelivr.net/gh/dshongphuc/magic-mouse-js/magic-mouse.min.js"></script>
+
+    <img src="fox.png" style="position:absolute; top:20px; left:20px; width:60px;">
+<img src="foxbot.webp" style="position:absolute; bottom:20px; right:30px; width:80px;">
+
+  <div class="typing-container">
+    <div class="heart-peek"><span id="emojiSwap">💗</span></div>
+
+
+    
+    <div class="typing-text" id="typingText">
+      Hello Uno, this is our journey — full of ups and downs, laughter and love, and memories we'll always hold close. 💖
+    </div>
+    <button class="continue-btn" id="continueBtn" onclick="location.href='timeline.html'">Continue ➤</button>
+  </div>
+
+
+  
+<audio autoplay loop volume="0.2">
+  <source src="music/soft-piano.mp3" type="audio/mpeg">
+</audio>
+
+
+  <script>
+    const textElement = document.getElementById("typingText");
+    const continueBtn = document.getElementById("continueBtn");
+
+    textElement.addEventListener("animationend", () => {
+      continueBtn.style.display = "inline-block";
+    });
+    function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.textContent = "💗";
+  heart.style.left = Math.random() * 100 + "vw";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 8000);
+}
+setInterval(createHeart, 1000);
+
+const heartEmojis = ["💗", "💞", "💖", "💝","💓","❣️"];
+let emojiIndex = 0;
+const emojiSwap = document.getElementById("emojiSwap");
+
+setInterval(() => {
+  // Fade out
+  emojiSwap.style.opacity = 0;
+
+  setTimeout(() => {
+    // Change emoji after fade-out
+    emojiIndex = (emojiIndex + 1) % heartEmojis.length;
+    emojiSwap.textContent = heartEmojis[emojiIndex];
+
+    // Fade in
+    emojiSwap.style.opacity = 1;
+  }, 400); // Match this to the CSS transition duration
+}, 1500); // Total cycle time
+
+
+
+
+  </script>
+  <script src="cursor.js"></script>
+
+
+</body>
+
+</html>
+
